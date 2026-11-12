@@ -41,6 +41,14 @@ const EXTENSION_LANGUAGES: Record<string, string> = {
 	'.java': 'java',
 	'.lua': 'lua',
 	'.svelte': 'svelte',
+	'.c': 'cpp',
+	'.h': 'cpp',
+	'.cpp': 'cpp',
+	'.cc': 'cpp',
+	'.cxx': 'cpp',
+	'.hpp': 'cpp',
+	'.hh': 'cpp',
+	'.ino': 'cpp',
 };
 
 const LANGUAGE_SERVERS: Record<string, LspServerConfig> = {
@@ -100,11 +108,20 @@ const LANGUAGE_SERVERS: Record<string, LspServerConfig> = {
 		install_hint:
 			'Install Svelte LSP with: pnpm add -D svelte-language-server (or volta install svelte-language-server)',
 	},
+	cpp: {
+		language: 'cpp',
+		command: 'clangd',
+		args: ['--background-index'],
+		install_hint:
+			'Install clangd (e.g. brew install llvm) and ensure the clangd binary is on PATH.',
+	},
 };
 
 const WORKSPACE_MARKERS = [
 	'svelte.config.js',
 	'svelte.config.ts',
+	'CMakeLists.txt',
+	'Makefile',
 	'tsconfig.json',
 	'jsconfig.json',
 	'package.json',

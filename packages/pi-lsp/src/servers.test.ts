@@ -30,6 +30,8 @@ describe('detect_language', () => {
 		expect(detect_language('file.ts')).toBe('typescript');
 		expect(detect_language('component.svelte')).toBe('svelte');
 		expect(detect_language('main.py')).toBe('python');
+		expect(detect_language('main.c')).toBe('cpp');
+		expect(detect_language('header.hpp')).toBe('cpp');
 	});
 
 	it('returns undefined for unknown extensions', () => {
@@ -40,6 +42,7 @@ describe('detect_language', () => {
 describe('list_supported_languages', () => {
 	it('includes the built-in language set', () => {
 		expect(list_supported_languages()).toEqual([
+			'cpp',
 			'go',
 			'java',
 			'lua',
